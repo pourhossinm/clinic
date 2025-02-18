@@ -1,0 +1,54 @@
+<title>Online Booking</title>
+{% extends 'layout.html' %}
+{% load static %}
+{% block body %}
+
+
+
+
+{% if user.is_authenticated %}
+<h1 class="text-center  mt-3">اخذ نوبت </h1>
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+    <form method="post" action="{% url 'booking' %}"  class="me-2 ms-2" required>
+        {% csrf_token %}
+
+        <!--input service-->
+        <div>
+            <h3 class="" >انتخاب خدمات:</h3>
+            <select class="form-select fs-3" name="service">
+                <option value="Hearing">شنوایی</option>
+                <option value="Speech therapy">گفتار درمانی</option>
+                <option value="Occupational therapy">کاردرمانی</option>
+                <option value="Physiotherapy">فیزیوتراپی</option>
+                <option value="Arthritis">آرتروز</option>
+                <option value="Prosthesis">پروتز</option>
+            </select>
+        </div>
+            <!--input day-->
+            <div class="mt-3">
+                <h3 class="">انتخاب تاریخ هفته:</h3>
+                <select class="form-select fs-3" name="day">
+                    {% for validateWeekday in validateWeekdays %}
+                    <option value="{{validateWeekday}}">{{validateWeekday}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <br/>
+            <button type="submit" class="btn btn-primary text-white">ادامه</button>
+        </div>
+    </form>
+</div>
+
+{% else %}
+
+<div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
+    <h1 class="p-2  me-3">شما به سامانه وارد نشده اید!</h1>
+    <a href="{% url 'register' %}" class="btn btn-primary shadow text-center">ورود</a>
+</div>
+
+{% endif %}
+
+
+{% endblock %}
