@@ -19,7 +19,7 @@ def booking(request):
         service = request.POST.get('service')
         day = request.POST.get('day')
         if service == None:
-            messages.success(request, "Please Select A Service!")
+            messages.success(request, "خدمت مورد نظر را انتخاب کنید!")
             return redirect('booking')
 
         #Store day and service in django session:
@@ -56,7 +56,6 @@ def bookingSubmit(request):
     if request.method == 'POST':
         time = request.POST.get("time")
         date = dayToWeekday(day)
-        print(day)
         if service != None:
             if day <= maxDate and day >= minDate:
                 if date == 'Monday' or date == 'Saturday' or date == 'Wednesday' or date == 'Tuesday' or date == 'Sunday' or date == 'Thursday':
@@ -68,18 +67,18 @@ def bookingSubmit(request):
                                 day = day,
                                 time = time,
                             )
-                            messages.success(request, "Appointment Saved!")
+                            messages.success(request, "نوبت ذخیره شد!")
                             return redirect('index')
                         else:
-                            messages.success(request, "The Selected Time Has Been Reserved Before!")
+                            messages.success(request, "زمان انتخابی قبلا رزرو شده!")
                     else:
-                        messages.success(request, "The Selected Day Is Full!")
+                        messages.success(request, "ظرفیت زمان انتخابی پر میباشد!")
                 else:
-                    messages.success(request, "The Selected Date Is Incorrect")
+                    messages.success(request, "تاریخ انتخابی صحیح نیست")
             else:
-                    messages.success(request, "The Selected Date Isn't In The Correct Time Period!")
+                    messages.success(request, "زمان انتخابی در دوره تعریف شده نیست!")
         else:
-            messages.success(request, "Please Select A Service!")
+            messages.success(request, "سرویس را انتخاب کنید!")
 
 
     return render(request, 'bookingSubmit.html', {
@@ -131,15 +130,15 @@ def userUpdate(request, id):
 def userUpdateSubmit(request, id):
     user = request.user
     times = [
-        "3 PM", "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM", "6:30 PM", "7 PM", "7:30 PM"
+        "8 AM", "8:30 AM", "9 AM", "9:30 AM", "10 AM", "10:30 AM", "11 AM", "11:30 AM", "12 AM", "3 PM"
+        , "3:30 PM", "4 PM", "4:30 PM", "5 PM", "5:30 PM", "6 PM"
     ]
     today = datetime.now()
     minDate = jdatetime.datetime.fromgregorian(datetime=today).strftime('%Y-%m-%d')
     deltatime = today + timedelta(days=10)
-    strdeltatime = datetime.datetime.fromgregorian(datetime=deltatime).strftime('%Y-%m-%d')
+    strdeltatime = jdatetime.datetime.fromgregorian(datetime=deltatime).strftime('%Y-%m-%d')
     maxDate = strdeltatime
     day = request.session.get('day')
-    print(f"{minDate}  {maxDate} {day}")
 
     service = request.session.get('service')
     
@@ -162,18 +161,18 @@ def userUpdateSubmit(request, id):
                                 day = day,
                                 time = time,
                             ) 
-                            messages.success(request, "Appointment Edited!")
+                            messages.success(request, "نوبت ویرایش شد!")
                             return redirect('index')
                         else:
-                            messages.success(request, "The Selected Time Has Been Reserved Before!")
+                            messages.success(request, "زمان انتخابی قبلا رزرو شده است!")
                     else:
-                        messages.success(request, "The Selected Day Is Full!")
+                        messages.success(request, "ظرفبت روز انتخابی پر است!")
                 else:
-                    messages.success(request, "The Selected Date Is Incorrect")
+                    messages.success(request, "تاریخ انتخابی صحیح نیست")
             else:
-                    messages.success(request, "The Selected Date Isn't In The Correct Time Period!")
+                    messages.success(request, "زمان انتخابی در دوره کاری نمی باشد!")
         else:
-            messages.success(request, "Please Select A Service!")
+            messages.success(request, "خدمت مورد نظر را انتخاب کنید!")
         return redirect('userPanel')
 
 
@@ -183,10 +182,11 @@ def userUpdateSubmit(request, id):
     })
 
 def staffPanel(request):
+
     today = datetime.today()
-    minDate = today.strftime('%Y-%m-%d')
-    deltatime = today + timedelta(days=21)
-    strdeltatime = deltatime.strftime('%Y-%m-%d')
+    minDate = jdatetime.datetime.fromgregorian(datetime=today).strftime('%Y-%m-%d')
+    deltatime = today + timedelta(days=10)
+    strdeltatime = jdatetime.datetime.fromgregorian(datetime=deltatime).strftime('%Y-%m-%d')
     maxDate = strdeltatime
     #Only show the Appointments 21 days from today
     items = Appointment.objects.filter(day__range=[minDate, maxDate]).order_by('day', 'time')

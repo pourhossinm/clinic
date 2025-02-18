@@ -3,17 +3,25 @@ from datetime import datetime
 from django.contrib.auth.models import User
 
 SERVICE_CHOICES = (
-    ("Hearing", "شنوایی"),
-    ("Speech therapy", "گفتار درمانی"),
-    ("Occupational therapy", "کاردرمانی"),
-    ("Physiotherapy", "فیزیوتراپی"),
-    ("Arthritis", "آرتروز"),
-    ("Prosthesis", "پروتز"),
+    ("شنوایی", "شنوایی"),
+    ("Speech therapy", "Speech therapy"),
+    ("Occupational therapy", "Occupational therapy"),
+    ("Physiotherapy", "Physiotherapy"),
+    ("Arthritis", "آArthritis"),
+    ("Prosthesis", "Prosthesis"),
     )
 TIME_CHOICES = (
-    ("8 صبح", "8:30 صبح"),
-    ("3:30 PM", "3:30 PM"),
-    ("4 PM", "4 PM"),
+    ("8 AM", "8:30 AM"),
+    ("8:30 AM", "9 AM"),
+    ("9 AM", "9:30 AM"),
+    ("9:30 AM", "10 AM"),
+    ("10: AM", "10:30 AM"),
+    ("10:30 AM", "11 AM"),
+    ("11 AM", "11:30 AM"),
+    ("11:30 AM", "12 AM"),
+    ("3 PM", "3:30 9M"),
+    ("3:30 PM", "4 PM"),
+    ("4 PM", "4:30 PM"),
     ("4:30 PM", "4:30 PM"),
     ("5 PM", "5 PM"),
     ("5:30 PM", "5:30 PM"),
@@ -32,27 +40,3 @@ class Appointment(models.Model):
     def __str__(self):
         return f"{self.user.username} | day: {self.day} | time: {self.time}"
 
-#     < h3
-#
-#     class ="" > انتخاب خدمات:<
-#
-#         / h3 >
-#     < select
-#
-#     class ="form-select fs-3" name="service" >
-#
-#     < option
-#     value = "Hearing" > شنوایی < / option >
-#     < option
-#     value = "Speech therapy" > گفتار
-#     درمانی < / option >
-#     < option
-#     value = "Occupational therapy" > کاردرمانی < / option >
-#     < option
-#     value = "Physiotherapy" > فیزیوتراپی < / option >
-#     < option
-#     value = "Arthritis" > آرتروز < / option >
-#     < option
-#     value = "Prosthesis" > پروتز < / option >
-#
-# < / div >
