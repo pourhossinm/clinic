@@ -1,6 +1,6 @@
 from django.urls import path 
 from . import views
-from .views import test_weekdays
+from .views import test_weekdays, test_weekdays_with_appointments
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -11,5 +11,6 @@ urlpatterns = [
     path('user-update-submit/<int:id>', views.userUpdateSubmit, name='userUpdateSubmit'),
     path('staff-panel', views.staffPanel, name='staffPanel'),
     path('test-dates/', test_weekdays),
+path('test-appointments/', test_weekdays_with_appointments),
 
 ]

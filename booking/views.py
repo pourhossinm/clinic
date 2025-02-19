@@ -252,5 +252,17 @@ def test_weekdays(request):
         if y in ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه']:
             shamsi_date_str = shamsi_date.strftime('%Y-%m-%d')
             weekdays.append(shamsi_date_str)
+        else:
+            weekdays.append(y)
 
     return JsonResponse({'valid_weekdays': weekdays})
+
+def test_weekdays_with_appointments(request):
+    weekdays = validWeekday(10)
+    validateWeekdays = []
+
+    for j in weekdays:
+        count = Appointment.objects.filter(day=j).count()
+        validateWeekdays.append({'date': j, 'count': count})
+
+    return JsonResponse({'valid_weekdays': validateWeekdays})
