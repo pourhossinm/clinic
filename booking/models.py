@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 
 SERVICE_CHOICES = (
     ("شنوایی", "شنوایی"),
-    ("Speech therapy", "Speech therapy"),
-    ("Occupational therapy", "Occupational therapy"),
-    ("Physiotherapy", "Physiotherapy"),
-    ("Arthritis", "آArthritis"),
-    ("Prosthesis", "Prosthesis"),
+    ("گفتار درمانی", "گفتار درمانی"),
+    ("کار درمانی", "کاردرمانی"),
+    ("فیزیو تراپی", "فیزیوتراپی"),
+    ("آرترز", "آرترز"),
+    ("پروتز", "پروتز"),
     )
 TIME_CHOICES = (
     ("8 AM", "8:30 AM"),

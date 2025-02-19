@@ -19,15 +19,17 @@
         <div>
             <h3 class="">Select Service:</h3>
             <select class="form-select fs-3" name="service">
-                <option value="Doctor care">Doctor care</option>
-                <option value="Nursing care">Nursing care</option>
-                <option value="Medical social services">Medical social services</option>
-                <option value="Homemaker or basic assistance care">Homemaker or basic assistance care</option>
+                <option value="شنوایی">شنوایی</option>
+                <option value="گفتار درمانی">گفتار درمانی</option>
+                <option value="کار درمانی">کار درمانی</option>
+                <option value="فیزیو تراپی">فیزیو تراپی</option>
+                <option value="آرترز">آرترز</option>
+                <option value="پروتز">پروتز</option>
             </select>
         </div>
             <!--input day-->
             <div class="mt-3">
-                <h3 class="">Select Day:</h3>
+                <h3 class="">انتخاب روز:</h3>
                 <select class="form-select fs-3" name="day">
                     {% for validateWeekday in validateWeekdays %}
                     <option value="{{validateWeekday}}">{{validateWeekday}}</option>
@@ -36,8 +38,8 @@
             </div>
 
             <br/>
-            <button type="submit" class="btn btn-primary text-white">Continue</button>
-        </div>
+            <button type="submit" class="btn btn-primary text-white">ادامه</button>
+<!--        </div>-->
     </form>
 </div>
 <!--else if its 24hrs before editing-->
