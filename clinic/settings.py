@@ -109,13 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'fa-ir'  # یا 'en-us' بسته به نیاز
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
-
-USE_TZ = True
+USE_TZ = False  # این را به False تغییر بده
 
 
 # Static files (CSS, JavaScript, Images)
