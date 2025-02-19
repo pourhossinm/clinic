@@ -124,12 +124,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# مسیر ذخیره استاتیک فایل‌ها در Render
+# مسیر جمع‌آوری استاتیک فایل‌ها
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# مسیر اضافی برای استاتیک فایل‌های داخل اپ‌ها
+# مسیر پوشه استاتیک در داخل پروژه (در صورت وجود)
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static')  # پوشه‌ای که bootstrap در آن قرار دارد
 ]
 
 # Default primary key field type
