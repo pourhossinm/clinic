@@ -3,14 +3,13 @@ from datetime import datetime, timedelta
 from .models import *
 from django.contrib import messages
 import jdatetime
-from django.utils.timezone import localtime
 
 def index(request):
     return render(request, "index.html",{})
 
 def booking(request):
     #Calling 'validWeekday' Function to Loop days you want in the next 21 days:
-    weekdays = validWeekday(10)
+    weekdays = validWeekday(22)
 
     #Only show the days that are not full:
     validateWeekdays = isWeekdayValid(weekdays)
@@ -43,7 +42,7 @@ def bookingSubmit(request):
     ]
     today = datetime.now()
     minDate = jdatetime.datetime.fromgregorian(datetime=today).strftime('%Y-%m-%d')
-    deltatime = today + timedelta(days=10)
+    deltatime = today + timedelta(days=22)
     strdeltatime = jdatetime.datetime.fromgregorian(datetime=deltatime).strftime('%Y-%m-%d')
     maxDate = strdeltatime
     day = request.session.get('day')
@@ -104,7 +103,7 @@ def userUpdate(request, id):
     #24h if statement in template:
     delta24 = (userdatepicked).strftime('%Y-%m-%d') >= (today + timedelta(days=1)).strftime('%Y-%m-%d')
     #Calling 'validWeekday' Function to Loop days you want in the next 21 days:
-    weekdays = validWeekday(10)
+    weekdays = validWeekday(22)
 
     #Only show the days that are not full:
     validateWeekdays = isWeekdayValid(weekdays)
@@ -136,7 +135,7 @@ def userUpdateSubmit(request, id):
     ]
     today = datetime.now()
     minDate = jdatetime.datetime.fromgregorian(datetime=today).strftime('%Y-%m-%d')
-    deltatime = today + timedelta(days=10)
+    deltatime = today + timedelta(days=22)
     strdeltatime = jdatetime.datetime.fromgregorian(datetime=deltatime).strftime('%Y-%m-%d')
     maxDate = strdeltatime
     day = request.session.get('day')
@@ -202,7 +201,7 @@ def dayToWeekday(x):
     return y
 
 def validWeekday(days):
-    today = localtime()
+    today = datetime.now()
     weekdays = []
     for i in range(days):
         x = today + timedelta(days=i)
@@ -217,7 +216,7 @@ def validWeekday(days):
 def isWeekdayValid(x):
     validateWeekdays = []
     for j in x:
-        if Appointment.objects.filter(day=j).count() < 10:
+        if Appointment.objects.filter(day=j).count() < 22:
             validateWeekdays.append(j)
     return validateWeekdays
 
