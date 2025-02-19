@@ -249,7 +249,7 @@ def test_weekdays(request):
         shamsi_date = jdatetime.datetime.fromgregorian(datetime=x)
         y = shamsi_date.strftime('%A')  # روز هفته به فارسی
 
-        if y in ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه']:
+        if y in ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]:
             shamsi_date_str = shamsi_date.strftime('%Y-%m-%d')
             weekdays.append(shamsi_date_str)
         else:
