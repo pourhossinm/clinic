@@ -6,10 +6,13 @@ from django.db import models
 
 
 class RegisterUserForm(UserCreationForm):
-    email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={'class':'form-control form-control-lg', 'placeholder': 'example@gmail.com'}))
-    first_name = forms.CharField(label='First Name', max_length=50, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
-    last_name = forms.CharField(label='Last Name', max_length=50, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
-    
+    username = forms.CharField(label='نام کاربری', widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    email = forms.CharField(label='شماره تماس', widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    first_name = forms.CharField(label='نام', max_length=50, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    last_name = forms.CharField(label='نام خانوادگی', max_length=50, widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    password1 = forms.CharField(label='کلمه عبور', widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+    password2 = forms.CharField(label='تکرار کلمه عبور', widget=forms.TextInput(attrs={'class':'form-control form-control-lg'}))
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')

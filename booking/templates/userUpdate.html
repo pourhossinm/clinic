@@ -9,7 +9,7 @@
 {% if user.is_authenticated %}
 <!--if 24hrs before nobat-->
 {% if delta24 == True %}
-<h1 class="text-center  mt-3">Edit Appointment</h1>
+<h1 class="text-center  mt-3">ویرایش نوبت</h1>
 
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
     <form method="post" action="{% url 'userUpdate' id %}" class="me-2 ms-2" required>
@@ -17,7 +17,7 @@
 
         <!--input service-->
         <div>
-            <h3 class="">Select Service:</h3>
+            <h3 class="">انتخاب خدمت:</h3>
             <select class="form-select fs-3" name="service">
                 <option value="شنوایی">شنوایی</option>
                 <option value="گفتار درمانی">گفتار درمانی</option>
@@ -46,8 +46,8 @@
 {% else %}
 
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black m-5 text-center fPersian">
-    <h1 class="text-danger">Editing Appointments Its Only Available 24hrs Before Appointment!</h1>
-    <a href="{% url 'userPanel' %}" class="btn btn-primary mt-5">Return To User Panel</a>
+    <h1 class="text-danger">ویرایش نوبت فقط در 24 ساعت امکان دارد!</h1>
+    <a href="{% url 'userPanel' %}" class="btn btn-primary mt-5">به پنل کاربری برگردید</a>
 </div>
 
 {% endif %}
@@ -56,8 +56,8 @@
 {% else %}
 
 <div class="shadow p-4 mb-5 bg-body bg-body rounded text-black  m-5 ">
-    <h1 class="p-2  me-3">You Are Not Signed in!</h1>
-    <a href="{% url 'register' %}" class="btn btn-primary shadow text-center">Sign in</a>
+    <h1 class="p-2  me-3">ابتدا وارد سایت شوید!</h1>
+    <a href="{% url 'register' %}" class="btn btn-primary shadow text-center">ورود</a>
 </div>
 
 {% endif %}
