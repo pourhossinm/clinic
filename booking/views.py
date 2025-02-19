@@ -208,7 +208,7 @@ def validWeekday(days):
         x = today + timedelta(days=i)
         shamsi_date = jdatetime.datetime.fromgregorian(datetime=x)
         y = shamsi_date.strftime('%A')  # روز هفته به انگلیسی
-        if y in ['شنبه', 'یکشنبه', 'دوشنبه', 'سه شنبه', 'چهارشنبه']:
+        if y in  ["Wednesday", "Thursday",  "Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"]:
             # تبدیل تاریخ میلادی به شمسی
             shamsi_date = jdatetime.datetime.fromgregorian(datetime=x).strftime('%Y-%m-%d')
             weekdays.append(f"{shamsi_date}")
