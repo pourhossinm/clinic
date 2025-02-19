@@ -2,3 +2,4 @@ django
 requests
 jdatetime
 gunicorn==23.0.0
+dj_database_url
