@@ -1,3 +1,4 @@
 django
 requests
 jdatetime
+gunicorn==23.0.0
