@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from .models import *
 from django.contrib import messages
 import jdatetime
+from django.utils.timezone import localtime
 
 def index(request):
     return render(request, "index.html",{})
@@ -201,7 +202,7 @@ def dayToWeekday(x):
     return y
 
 def validWeekday(days):
-    today = datetime.now()
+    today = localtime()
     weekdays = []
     for i in range(days):
         x = today + timedelta(days=i)
