@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from .models import *
 from django.contrib import messages
 import jdatetime
+from django.http import JsonResponse
 
 def index(request):
     return render(request, "index.html",{})
@@ -237,3 +238,19 @@ def checkEditTime(times, day, id):
         if Appointment.objects.filter(day=day, time=k).count() < 1 or time == k:
             x.append(k)
     return x
+
+
+def test_weekdays(request):
+    today = datetime.now()  # دریافت زمان محلی
+    weekdays = []
+
+    for i in range(10):  # تست برای 10 روز آینده
+        x = today + timedelta(days=i)
+        shamsi_date = jdatetime.datetime.fromgregorian(datetime=x)
+        y = shamsi_date.strftime('%A')  # روز هفته به فارسی
+
+        if y in ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه']:
+            shamsi_date_str = shamsi_date.strftime('%Y-%m-%d')
+            weekdays.append(shamsi_date_str)
+
+    return JsonResponse({'valid_weekdays': weekdays})
